@@ -1,35 +1,35 @@
-async function fetchData() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve("Data received");
-      }, 1000);
-    });
-  }
-  
-  async function handleData() {
-    const data = await fetchData();
-    console.log(data); // "Data received"
-  }
-  
-  handleData();
+// Custom async-like behavior using callbacks
+function fetchData(callback) {
+  setTimeout(() => {
+    const errorOccurred = false; // Change this to true to simulate an error
 
+    if (errorOccurred) {
+      callback("Failed to fetch data", null); // Simulate an error
+    } else {
+      callback(null, "Data received"); // Simulate success
+    }
+  }, 1000);
+}
 
-// Simulating async/await using callbacks
-function fetchDataCallback(callback) {
-    setTimeout(() => {
-      callback(null, "Data received");
-    }, 1000);
-  }
-  
-  // A function to simulate async/await behavior using callbacks
-  function handleDataWithCallback() {
-    fetchDataCallback((err, data) => {
+// Function to mimic async/await behavior
+function customAsyncFunction() {
+  fetchData((err, data) => {
+    if (err) {
+      console.error("Error:", err);
+    } else {
+      console.log("Success:", data);
+    }
+
+    // Simulate another async call
+    fetchData((err, data) => {
       if (err) {
-        console.error(err);
+        console.error("Error:", err);
       } else {
-        console.log(data); // "Data received"
+        console.log("Success:", data);
       }
     });
-  }
-  
-  handleDataWithCallback();
+  });
+}
+
+// Call the function
+customAsyncFunction();

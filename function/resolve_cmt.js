@@ -1,31 +1,24 @@
-const fetchData = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("Data received");
-    }, 1000);
-  });
-  
-  fetchData
-  .then((data) => {
-    console.log(data); // "Data received"
-  });
-  
 
+function CBPromise(callback) {
+  setTimeout(() => {
+    const error = false; 
 
-  // Simulating a promise-like behavior with callbacks
-function fetchDataCallback(callback) {
-    setTimeout(() => {
-      callback(null, "Data received");
-    }, 1000);
-  }
-  
-  // Using the callback to handle the result
-  fetchDataCallback((err, data) => {
-    if (err) {
-      console.error(err);
+    if (error) {
+      callback("An error occurred!", null); 
     } else {
-      console.log(data); // "Data received"
+      callback(null, "Data received"); 
     }
-  });
+  }, 1000);
+}
 
 
-  // Simulating an error in the callback
+function handleResult(err, data) {
+  if (err) {
+    console.error("Rejected:", err);
+  } else {
+    console.log("Resolved:", data);
+  }
+}
+
+
+CBPromise(handleResult);

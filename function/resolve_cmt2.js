@@ -1,18 +1,18 @@
-// Custom async-like behavior using callbacks
+
 function fetchData(callback) {
   setTimeout(() => {
-    const errorOccurred = false; // Change this to true to simulate an error
+    const errorOccurred = false; 
 
     if (errorOccurred) {
-      callback("Failed to fetch data", null); // Simulate an error
+      callback("Failed to fetch data", null); 
     } else {
-      callback(null, "Data received"); // Simulate success
+      callback(null, "Data received");
     }
   }, 1000);
 }
 
-// Function to mimic async/await behavior
-function customAsyncFunction() {
+
+function CBAsyncFunction() { 
   fetchData((err, data) => {
     if (err) {
       console.error("Error:", err);
@@ -20,7 +20,7 @@ function customAsyncFunction() {
       console.log("Success:", data);
     }
 
-    // Simulate another async call
+    //async
     fetchData((err, data) => {
       if (err) {
         console.error("Error:", err);
@@ -31,5 +31,4 @@ function customAsyncFunction() {
   });
 }
 
-// Call the function
-customAsyncFunction();
+CBAsyncFunction();

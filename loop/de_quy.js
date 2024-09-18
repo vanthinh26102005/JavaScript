@@ -50,6 +50,7 @@ function giaithua_dequy(number) {
     if( number >= 0) {
         return number * giaithua(number -1);
     }
+    return 1;
 }
 
 console.log(giaithua_dequy(5));

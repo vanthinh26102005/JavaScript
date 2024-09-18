@@ -260,4 +260,9 @@ Promise.all([promise1, promise3])
     .then(function([result1, result3]) {
         console.log(result1.concat(result3));
     })
-    
+    // nhận ra: chỉ cần có 1 thằng reject thì nó sẽ k care nx mà nhảy thằng xuống catch luôn
+    .catch(function(err) {
+        console.log("error:", err);
+        // tận dụng cái này vd nếu sau này có rất nhiều thao tác
+        // tuy nó k phụ thuộc nhau nhưng nó cần tất cả đều resolved mới chạy
+    })

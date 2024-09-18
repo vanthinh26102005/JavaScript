@@ -89,7 +89,7 @@ var isFree = courses.filter(function(course, index) {
 console.log(isFree);
 
 // map()
-function courseHandler(course, index) {
+function courseHandler(course, index, originArray) { // đặc biệt map còn trả về mảng gốc
     console.log(course)
    // return course // (**); // nếu return như này thì in ra mảng courses luun
    return {
@@ -114,3 +114,4 @@ var newCourses = courses.map(courseHandler
  // th này nó k return về gì cả  thì nó sẽ ra undefine
  // giả sử mình sẽ cho nó return lại chính cái 'course' (**)
  console.log(newCourses);
+
